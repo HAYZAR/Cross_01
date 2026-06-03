@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crucigrama: Vibraciones y Ondas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Actividad en parejas · Física 11°</p>
+        <h1>Crucigrama: Vibraciones y Ondas</h1>
+        <p>Completen el crucigrama con 10 palabras horizontales y 10 verticales. Al finalizar, registren la actividad en Google Sheets.</p>
+      </div>
+      <div class="score-box"><span id="progress">0/20</span><small>palabras correctas</small></div>
+    </section>
+    <section class="student-card">
+      <h2>📝 Registra tu respuesta</h2>
+      <form id="studentForm" class="student-form">
+        <div class="field"><label for="student1">ESTUDIANTE 1 <b>*</b></label><input id="student1" name="student1" placeholder="Nombre completo" required></div>
+        <div class="field"><label for="student2">ESTUDIANTE 2 <b>*</b></label><input id="student2" name="student2" placeholder="Nombre completo" required></div>
+        <div class="field"><label for="student3">ESTUDIANTE 3 <em>(opcional)</em></label><input id="student3" name="student3" placeholder="Nombre completo"></div>
+        <div class="field"><label for="grade">GRADO <b>*</b></label><select id="grade" name="grade" required><option value="">— Selecciona —</option></select></div>
+      </form>
+    </section>
+    <section class="workspace">
+      <div class="crossword-panel">
+        <div class="toolbar"><button type="button" id="checkBtn">Verificar</button><button type="button" id="clearBtn" class="secondary">Limpiar letras</button><button type="button" id="printBtn" class="secondary">Imprimir</button></div>
+        <div id="crossword" class="crossword" aria-label="Crucigrama"></div>
+        <p class="hint">Usa solo letras. El sistema convierte automáticamente a mayúsculas y omite tildes.</p>
+      </div>
+      <aside class="clues"><h2>Pistas horizontales</h2><ol id="horizontalClues"></ol><h2>Pistas verticales</h2><ol id="verticalClues"></ol></aside>
+    </section>
+    <section class="submit-card">
+      <label for="teacherNote">Conclusión breve de la pareja</label>
+      <textarea id="teacherNote" placeholder="Escriban aquí una conclusión sobre vibraciones y ondas..."></textarea>
+      <button id="submitBtn" type="button" class="submit">Enviar respuesta</button>
+      <p id="status" class="status"></p>
+    </section>
+  </main>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
