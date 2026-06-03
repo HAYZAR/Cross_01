@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crucigrama: Vibraciones y Ondas</title>
+  <style>
+:root{--blue:#0b2c8f;--orange:#ff6a00;--bg:#f4f6fb;--card:#fff;--ink:#273043;--muted:#6b7280;--ok:#1a936f;--bad:#d7263d;--cell:24px}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#fff7e9 0,#f4f6fb 120px);color:var(--ink)}.page{max-width:1180px;margin:0 auto;padding:24px}.hero,.student-card,.submit-card,.crossword-panel,.clues{background:var(--card);border-radius:28px;box-shadow:0 16px 40px rgba(31,41,55,.08)}.hero{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:28px 34px;margin-bottom:24px}.eyebrow{color:var(--orange);font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:0 0 6px}h1{color:var(--blue);margin:0 0 8px;font-size:clamp(2rem,4vw,3.2rem);line-height:1}.hero p{max-width:760px;font-size:1.05rem}.score-box{min-width:150px;text-align:center;border:3px solid var(--orange);border-radius:22px;padding:16px;color:var(--blue)}.score-box span{display:block;font-size:2.1rem;font-weight:900}.score-box small{font-weight:700;color:var(--muted)}.student-card,.submit-card{padding:28px 34px;margin-bottom:24px}.student-card h2{margin:0 0 24px;color:var(--blue);font-size:1.7rem}.student-form{display:grid;grid-template-columns:1fr 1fr;gap:24px}.field label,.submit-card label{display:block;font-weight:800;color:var(--muted);letter-spacing:.04em;margin-bottom:10px}.field b{color:red}.field em{color:#aaa;font-weight:700}input,select,textarea{width:100%;border:3px solid #ddd;border-radius:16px;font-size:1.15rem;padding:14px 18px;outline:none;background:white}input:focus,select:focus,textarea:focus{border-color:var(--blue)}.workspace{display:grid;grid-template-columns:1fr;gap:24px;align-items:start;margin-bottom:24px}.crossword-panel,.clues{padding:24px}.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}button{border:0;border-radius:16px;padding:13px 20px;background:var(--blue);color:white;font-weight:900;font-size:1rem;cursor:pointer}button.secondary{background:#e8edf8;color:var(--blue)}button.submit{width:100%;background:var(--orange);font-size:1.35rem;margin-top:16px}button:hover{filter:brightness(.98);transform:translateY(-1px)}.crossword{display:grid;grid-template-columns:repeat(30,var(--cell));grid-template-rows:repeat(27,var(--cell));gap:2px;justify-content:center;overflow:auto;padding:12px}.cell{position:relative;width:var(--cell);height:var(--cell);background:#202938;border-radius:4px}.cell.active{background:white;border:1px solid #9ca3af}.cell input{border:0;border-radius:0;padding:0;width:100%;height:100%;text-align:center;font-size:14px;font-weight:900;text-transform:uppercase;background:transparent;color:#111827}.cell .num{position:absolute;top:1px;left:2px;font-size:7px;color:#1e293b;font-weight:900;line-height:1;pointer-events:none;z-index:3}.cell.correct{background:#daf7ea;border-color:var(--ok)}.cell.wrong{background:#ffe0e5;border-color:var(--bad)}.hint,.status{color:var(--muted);font-size:.95rem}.clues{display:grid;grid-template-columns:1fr 1fr;gap:0 32px}.clues h2{color:var(--blue);margin:0 0 10px}.clues ol{margin-top:0;padding-left:24px}.clues li{margin-bottom:10px;line-height:1.25}textarea{min-height:130px;resize:vertical}.status{min-height:28px;font-weight:800;text-align:center}@media(max-width:980px){:root{--cell:22px}.workspace,.student-form{grid-template-columns:1fr}.hero{flex-direction:column;align-items:flex-start}.crossword{justify-content:start}}@media(max-width:640px){:root{--cell:21px}.page{padding:12px}.student-card,.submit-card,.crossword-panel,.clues,.hero{border-radius:18px;padding:18px}.cell .num{top:1px;left:2px;font-size:6px}}@media print{body{background:white}.toolbar,.submit-card,.student-card,.hero p,.hint{display:none}.page{padding:0}.hero,.crossword-panel,.clues{box-shadow:none;border:1px solid #ddd;border-radius:0}.workspace{grid-template-columns:1fr}.crossword{justify-content:start;overflow:visible}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Actividad en parejas · Física 11°</p>
+        <h1>Crucigrama: Vibraciones y Ondas</h1>
+        <p>Completen el crucigrama con 10 palabras horizontales y 10 verticales. Al finalizar, registren la actividad en Google Sheets.</p>
+      </div>
+      <div class="score-box"><span id="progress">0/20</span><small>palabras correctas</small></div>
+    </section>
+    <section class="student-card">
+      <h2>📝 Registra tu respuesta</h2>
+      <form id="studentForm" class="student-form">
+        <div class="field"><label for="student1">ESTUDIANTE 1 <b>*</b></label><input id="student1" name="student1" placeholder="Nombre completo" required></div>
+        <div class="field"><label for="student2">ESTUDIANTE 2 <b>*</b></label><input id="student2" name="student2" placeholder="Nombre completo" required></div>
+        <div class="field"><label for="student3">ESTUDIANTE 3 <em>(opcional)</em></label><input id="student3" name="student3" placeholder="Nombre completo"></div>
+        <div class="field"><label for="grade">GRADO <b>*</b></label><select id="grade" name="grade" required><option value="">— Selecciona —</option></select></div>
+      </form>
+    </section>
+    <section class="workspace">
+      <div class="crossword-panel">
+        <div class="toolbar">
+          <button type="button" id="checkBtn">Verificar</button>
+          <button type="button" id="clearBtn" class="secondary">Limpiar letras</button>
+          <button type="button" id="printBtn" class="secondary">Imprimir</button>
+        </div>
+        <div id="crossword" class="crossword" aria-label="Crucigrama"></div>
+        <p class="hint">Usa solo letras. El sistema convierte automáticamente a mayúsculas y omite tildes.</p>
+      </div>
+      <aside class="clues">
+        <h2>Pistas horizontales</h2><ol id="horizontalClues"></ol>
+        <h2>Pistas verticales</h2><ol id="verticalClues"></ol>
+      </aside>
+    </section>
+    <section class="submit-card">
+      <label for="teacherNote">Conclusión breve de la pareja</label>
+      <textarea id="teacherNote" placeholder="Escriban aquí una conclusión sobre vibraciones y ondas..."></textarea>
+      <button id="submitBtn" type="button" class="submit">Enviar respuesta</button>
+      <p id="status" class="status"></p>
+    </section>
+  </main>
+  <script>
+const APP_CONFIG = {
+  "title": "Crucigrama: Vibraciones y Ondas",
+  "theme": "Vibraciones y Ondas",
+  "gradeOptions": [
+    "11A",
+    "11B",
+    "11C",
+    "11°"
+  ],
+  "scriptURL": "https://script.google.com/macros/s/AKfycbzCRlVEcJjXIlFN4AAqK-DY2IWqvBZ-ZDqPTKMUU6rhlTeHtp0vaVNL6tci46Z1_BZ8/exec",
+  "rows": 27,
+  "cols": 30,
+  "words": [
+    {
+      "num": 1,
+      "answer": "VIBRACION",
+      "dir": "H",
+      "row": 15,
+      "col": 12,
+      "clue": "Vaivén u oscilación que ocurre en el tiempo."
+    },
+    {
+      "num": 2,
+      "answer": "ONDA",
+      "dir": "H",
+      "row": 12,
+      "col": 14,
+      "clue": "Perturbación que se propaga de un lugar a otro."
+    },
+    {
+      "num": 3,
+      "answer": "PENDULO",
+      "dir": "H",
+      "row": 7,
+      "col": 8,
+      "clue": "Sistema simple que oscila y cuyo periodo depende de su longitud."
+    },
+    {
+      "num": 4,
+      "answer": "PERIODO",
+      "dir": "H",
+      "row": 3,
+      "col": 11,
+      "clue": "Tiempo que tarda una vibración completa."
+    },
+    {
+      "num": 5,
+      "answer": "AMPLITUD",
+      "dir": "H",
+      "row": 0,
+      "col": 14,
+      "clue": "Desplazamiento máximo respecto a la posición de equilibrio."
+    },
+    {
+      "num": 6,
+      "answer": "FRECUENCIA",
+      "dir": "H",
+      "row": 5,
+      "col": 0,
+      "clue": "Número de vibraciones o ciclos por unidad de tiempo."
+    },
+    {
+      "num": 7,
+      "answer": "HERTZ",
+      "dir": "H",
+      "row": 19,
+      "col": 14,
+      "clue": "Unidad SI de frecuencia."
+    },
+    {
+      "num": 8,
+      "answer": "LONGITUD",
+      "dir": "H",
+      "row": 10,
+      "col": 19,
+      "clue": "Magnitud presente en el concepto de longitud de onda."
+    },
+    {
+      "num": 9,
+      "answer": "SENOIDE",
+      "dir": "H",
+      "row": 17,
+      "col": 21,
+      "clue": "Curva que representa una onda armónica simple."
+    },
+    {
+      "num": 10,
+      "answer": "RAPIDEZ",
+      "dir": "H",
+      "row": 14,
+      "col": 23,
+      "clue": "Magnitud de propagación de una onda; se relaciona con frecuencia y longitud de onda."
+    },
+    {
+      "num": 11,
+      "answer": "TRANSVERSAL",
+      "dir": "V",
+      "row": 0,
+      "col": 19,
+      "clue": "Onda en la que el medio vibra perpendicularmente a la propagación."
+    },
+    {
+      "num": 12,
+      "answer": "LONGITUDINAL",
+      "dir": "V",
+      "row": 2,
+      "col": 17,
+      "clue": "Onda en la que el medio vibra paralelo a la propagación."
+    },
+    {
+      "num": 13,
+      "answer": "COMPRESION",
+      "dir": "V",
+      "row": 3,
+      "col": 23,
+      "clue": "Región de mayor presión o acumulación en una onda longitudinal."
+    },
+    {
+      "num": 14,
+      "answer": "RAREFACCION",
+      "dir": "V",
+      "row": 4,
+      "col": 9,
+      "clue": "Región de menor presión o expansión en una onda longitudinal."
+    },
+    {
+      "num": 15,
+      "answer": "INTERFERENCIA",
+      "dir": "V",
+      "row": 11,
+      "col": 15,
+      "clue": "Fenómeno que ocurre cuando dos o más ondas se superponen."
+    },
+    {
+      "num": 16,
+      "answer": "SUPERPOSICION",
+      "dir": "V",
+      "row": 9,
+      "col": 25,
+      "clue": "Principio según el cual se suman los desplazamientos de ondas coincidentes."
+    },
+    {
+      "num": 17,
+      "answer": "CONSTRUCTIVA",
+      "dir": "V",
+      "row": 15,
+      "col": 17,
+      "clue": "Tipo de interferencia donde las amplitudes se refuerzan."
+    },
+    {
+      "num": 18,
+      "answer": "DESTRUCTIVA",
+      "dir": "V",
+      "row": 2,
+      "col": 12,
+      "clue": "Tipo de interferencia donde cresta y valle se anulan parcial o totalmente."
+    },
+    {
+      "num": 19,
+      "answer": "NODO",
+      "dir": "V",
+      "row": 10,
+      "col": 21,
+      "clue": "Punto de una onda estacionaria con desplazamiento mínimo o cero."
+    },
+    {
+      "num": 20,
+      "answer": "ANTINODO",
+      "dir": "V",
+      "row": 0,
+      "col": 14,
+      "clue": "Punto de una onda estacionaria con desplazamiento máximo."
+    }
+  ]
+};
+const gridEl=document.getElementById("crossword"),hClues=document.getElementById("horizontalClues"),vClues=document.getElementById("verticalClues"),progressEl=document.getElementById("progress"),statusEl=document.getElementById("status"),gradeEl=document.getElementById("grade");const normalize=s=>(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/Ñ/g,"N").replace(/ñ/g,"N").replace(/[^A-Za-z]/g,"").toUpperCase();const cells={};function key(r,c){return `${r}-${c}`}function buildModel(){APP_CONFIG.words.forEach(w=>{[...w.answer].forEach((ch,i)=>{const r=w.row+(w.dir==="V"?i:0),c=w.col+(w.dir==="H"?i:0),k=key(r,c);cells[k]=cells[k]||{r,c,answer:ch,starts:[]};cells[k].answer=ch;if(i===0)cells[k].starts.push(w.num)})})}function renderGrades(){APP_CONFIG.gradeOptions.forEach(g=>{const opt=document.createElement("option");opt.value=g;opt.textContent=g;gradeEl.appendChild(opt)})}function renderGrid(){gridEl.style.gridTemplateColumns=`repeat(${APP_CONFIG.cols}, var(--cell))`;gridEl.style.gridTemplateRows=`repeat(${APP_CONFIG.rows}, var(--cell))`;for(let r=0;r<APP_CONFIG.rows;r++){for(let c=0;c<APP_CONFIG.cols;c++){const div=document.createElement("div");div.className="cell";div.dataset.r=r;div.dataset.c=c;const k=key(r,c);if(cells[k]){div.classList.add("active");if(cells[k].starts.length){const num=document.createElement("span");num.className="num";num.textContent=cells[k].starts.join("/");div.appendChild(num)}const input=document.createElement("input");input.maxLength=1;input.autocomplete="off";input.inputMode="text";input.dataset.answer=cells[k].answer;input.addEventListener("input",e=>{e.target.value=normalize(e.target.value).slice(-1);moveNext(e.target);updateProgress()});input.addEventListener("keydown",handleNav);div.appendChild(input)}gridEl.appendChild(div)}}}function moveNext(input){if(!input.value)return;const div=input.parentElement,r=Number(div.dataset.r),c=Number(div.dataset.c);const next=document.querySelector(`.cell[data-r="${r}"][data-c="${c+1}"] input`)||document.querySelector(`.cell[data-r="${r+1}"][data-c="${c}"] input`);if(next)next.focus()}function handleNav(e){const div=e.target.parentElement;let r=Number(div.dataset.r),c=Number(div.dataset.c);if(e.key==="ArrowRight")c++;else if(e.key==="ArrowLeft")c--;else if(e.key==="ArrowDown")r++;else if(e.key==="ArrowUp")r--;else return;const next=document.querySelector(`.cell[data-r="${r}"][data-c="${c}"] input`);if(next){e.preventDefault();next.focus()}}function renderClues(){const groups=[[APP_CONFIG.words.filter(w=>w.dir==="H"),hClues],[APP_CONFIG.words.filter(w=>w.dir==="V"),vClues]];groups.forEach(([list,el])=>{list.sort((a,b)=>a.num-b.num).forEach(w=>{const li=document.createElement("li");li.value=w.num;li.innerHTML=`${w.clue} <small>(${w.answer.length} letras)</small>`;el.appendChild(li)})})}function getWordValue(w){let value="";for(let i=0;i<w.answer.length;i++){const r=w.row+(w.dir==="V"?i:0),c=w.col+(w.dir==="H"?i:0),input=document.querySelector(`.cell[data-r="${r}"][data-c="${c}"] input`);value+=normalize(input?.value||"")}return value}function checkAnswers(mark=true){let correct=0;APP_CONFIG.words.forEach(w=>{const ok=getWordValue(w)===w.answer;if(ok)correct++;if(mark){for(let i=0;i<w.answer.length;i++){const r=w.row+(w.dir==="V"?i:0),c=w.col+(w.dir==="H"?i:0),cell=document.querySelector(`.cell[data-r="${r}"][data-c="${c}"]`);cell.classList.remove("correct","wrong");cell.classList.add(ok?"correct":"wrong")}}});progressEl.textContent=`${correct}/${APP_CONFIG.words.length}`;return correct}function updateProgress(){checkAnswers(false)}function getGridText(){return APP_CONFIG.words.map(w=>`${w.num}. ${w.answer}: ${getWordValue(w)}`).join(" | ")}async function submitData(){const form=document.getElementById("studentForm");if(!form.reportValidity())return;const score=checkAnswers(true);const data={timestamp:new Date().toISOString(),student1:document.getElementById("student1").value.trim(),student2:document.getElementById("student2").value.trim(),student3:document.getElementById("student3").value.trim(),grade:document.getElementById("grade").value,score,total:APP_CONFIG.words.length,percent:Math.round(score/APP_CONFIG.words.length*100),note:document.getElementById("teacherNote").value.trim(),responses:getGridText(),userAgent:navigator.userAgent};if(APP_CONFIG.scriptURL.includes("PEGA_AQUI")){statusEl.textContent="Falta pegar la URL del Apps Script en config.js. La actividad funciona, pero todavía no envía a Google Sheets.";statusEl.style.color="#d7263d";console.table(data);return}statusEl.textContent="Enviando...";statusEl.style.color="#6b7280";try{await fetch(APP_CONFIG.scriptURL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});statusEl.textContent="Respuesta enviada. Revisa el Google Sheet.";statusEl.style.color="#1a936f"}catch(err){statusEl.textContent="No se pudo enviar. Revisa la URL del Apps Script o permisos de despliegue.";statusEl.style.color="#d7263d"}}document.getElementById("checkBtn").addEventListener("click",()=>checkAnswers(true));document.getElementById("clearBtn").addEventListener("click",()=>{document.querySelectorAll(".cell.active input").forEach(i=>i.value="");document.querySelectorAll(".cell").forEach(c=>c.classList.remove("correct","wrong"));updateProgress()});document.getElementById("printBtn").addEventListener("click",()=>window.print());document.getElementById("submitBtn").addEventListener("click",submitData);buildModel();renderGrades();renderGrid();renderClues();updateProgress();
+  </script>
+</body>
+</html>

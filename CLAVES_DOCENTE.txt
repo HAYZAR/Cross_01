@@ -1,0 +1,27 @@
+CLAVES DEL DOCENTE - CRUCIGRAMA VIBRACIONES Y ONDAS
+
+Horizontales
+1. VIBRACION
+2. ONDA
+3. PENDULO
+4. PERIODO
+5. AMPLITUD
+6. FRECUENCIA
+7. HERTZ
+8. LONGITUD
+9. SENOIDE
+10. RAPIDEZ
+
+Verticales
+11. TRANSVERSAL
+12. LONGITUDINAL
+13. COMPRESION
+14. RAREFACCION
+15. INTERFERENCIA
+16. SUPERPOSICION
+17. CONSTRUCTIVA
+18. DESTRUCTIVA
+19. NODO
+20. ANTINODO
+
+Validación: todas las secuencias horizontales y verticales de más de una celda corresponden exactamente a una clave. No hay celdas blancas huérfanas ni palabras sobrepuestas sin pista.

@@ -16,6 +16,7 @@
       </div>
       <div class="score-box"><span id="progress">0/20</span><small>palabras correctas</small></div>
     </section>
+
     <section class="student-card">
       <h2>📝 Registra tu respuesta</h2>
       <form id="studentForm" class="student-form">
@@ -25,17 +26,19 @@
         <div class="field"><label for="grade">GRADO <b>*</b></label><select id="grade" name="grade" required><option value="">— Selecciona —</option></select></div>
       </form>
     </section>
+
     <section class="workspace">
       <div class="crossword-panel">
         <div class="toolbar"><button type="button" id="checkBtn">Verificar</button><button type="button" id="clearBtn" class="secondary">Limpiar letras</button><button type="button" id="printBtn" class="secondary">Imprimir</button></div>
         <div id="crossword" class="crossword" aria-label="Crucigrama"></div>
-        <p class="hint">Usa solo letras. El sistema convierte automáticamente a mayúsculas y omite tildes.</p>
+        <p class="hint">Usa solo letras. El sistema convierte automáticamente a mayúsculas y omite tildes. Esta versión está validada: no tiene celdas blancas sin pista.</p>
       </div>
       <aside class="clues"><h2>Pistas horizontales</h2><ol id="horizontalClues"></ol><h2>Pistas verticales</h2><ol id="verticalClues"></ol></aside>
     </section>
+
     <section class="submit-card">
-      <label for="teacherNote">Conclusión breve de la pareja</label>
-      <textarea id="teacherNote" placeholder="Escriban aquí una conclusión sobre vibraciones y ondas..."></textarea>
+      <label for="teacherNote">Observaciones o comentario final</label>
+      <textarea id="teacherNote" placeholder="Escriban aquí una conclusión breve sobre la actividad..."></textarea>
       <button id="submitBtn" type="button" class="submit">Enviar respuesta</button>
       <p id="status" class="status"></p>
     </section>
